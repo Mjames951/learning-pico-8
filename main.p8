@@ -8,6 +8,7 @@ function _init()
 	framekey=0
 	
 	game = {
+		mode=1,
 		cam_x=0,
 		cam_y=0,
 	}
@@ -19,7 +20,8 @@ function _init()
 		anim_idx=0,
 		x=64,
 		y=64,
-		f=false
+		f=false,
+		input=false
 	}
 	
 end
@@ -98,6 +100,12 @@ function playermove()
 	player.is_moving=mcmoving
 end
 
+function playerinput()
+	if btn() then
+		player.input=true
+	end
+end
+
 function _update()
 	playermove()
 	framing()
@@ -105,13 +113,37 @@ end
 
 function _draw()
 	cls()
-	camera(game.cam_x,game.cam_y)
-	map(0,0,12,8,8,8)
-	print(framekey,2,2,8)
-	print(player.is_moving,2,8,4)
-	--draw the main character
-	spr(player.spr_base+player.spr_idx,
-		player.x,player.y,1,1,f)
+	
+	drawers={
+		draw_home,
+		draw_world,
+	}
+	
+	if game.mode==1 then
+		camera(game.cam_x,game.cam_y)
+		map(0,0,12,8,8,8)
+		print(framekey,2,2,8)
+		print(player.is_moving,2,8,4)
+		--draw the main character
+		spr(player.spr_base+player.spr_idx,
+			player.x,player.y,1,1,f)
+	elseif game.mode==0 then
+		print("press any key to start the game!")
+	end
+end
+-->8
+function draw_home()
+	print("welcome to the game")
+
+end
+
+function draw_world()
+
+
+end
+
+function start_text()
+	
 end
 __gfx__
 02222220000000000000000000000000002222200000000000000000000000000022222000000000000000000000000000000000000000000000000000000000
