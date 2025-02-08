@@ -77,10 +77,14 @@ function playermove()
 		mcmoving=true
 	end
 	if btn(⬇️) then
+		if btn(⬆️) then
+			mcmoving=false
+		else
+			mcmoving=true
+		end
 		game.cam_y+=1
 		player.spr_base=8
-	 player.y+=1
-	 mcmoving=true
+		player.y+=1
 	end
 	if btn(➡️) then
 		game.cam_x+=1
@@ -90,6 +94,9 @@ function playermove()
 		f=true
 	end
 	if btn(⬅️) then
+		if btn(➡️) then
+			mcmoving=false
+		end
 		game.cam_x-=1
 		player.spr_base=0
 		player.x-=1
