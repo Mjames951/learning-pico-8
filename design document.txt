@@ -1,0 +1,20 @@
+game state is a table
+{
+	state = #
+	substate = #
+	camera = {x,y}
+	entities = {list of entities}
+	map = map#
+	framerule = #
+}
+
+states and substates
+
+-0 = start menu
+	-
+-1 = pause menu
+-2 = overworld
+-4 = battle
+
+
+--every frame, go through the list of entities (on the screen) and update them
